@@ -1,43 +1,19 @@
 const express = require('express');
+const path = require('path');
+const { getSystemInfo } = require('./utils/systemInfo');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Servir HTML desde /views
 app.get('/', (req, res) => {
-  res.send(`
-    <html>
-      <head>
-        <title>Proyecto de Sistemas Operativos</title>
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            color: #333;
-            text-align: center;
-            padding: 50px;
-          }
-          .container {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            display: inline-block;
-          }
-          h1 {
-            color: #007BFF;
-          }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <h1>¡Bienvenido a nuestro proyecto de Sistemas Operativos!</h1>
-          <p>Esta aplicación está funcionando dentro de un contenedor Docker desplegado en Render.com.</p>
-          <p><strong>Grupo #5</strong></p>
-          <p><strong>Clase:</strong> Sistemas Operativos I</p>
-          <p>Gracias por visitar nuestro proyecto 🚀</p>
-        </div>
-      </body>
-    </html>
-  `);
+  res.sendFile(path.join(__dirname, 'views', 'home.html'));
+});
+
+// Ruta técnica del sistema
+app.get('/info', (req, res) => {
+  const info = getSystemInfo();
+  res.json(info);
 });
 
 app.listen(PORT, () => {
