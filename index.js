@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
       </head>
       <body>
         <div class="container">
-          <h1>¡Bienvenido a nuestro proyecto de Base de Datos!</h1>
+          <h1>¡Bienvenido a nuestro proyecto de Sistemas Operativos!</h1>
           <p>Esta aplicación está funcionando dentro de un contenedor Docker desplegado en Render.com.</p>
           <p><strong>Grupo #5</strong></p>
           <p><strong>Clase:</strong> Sistemas Operativos I</p>
